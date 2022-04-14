@@ -15,10 +15,10 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.get('/products/:id', products.findByIdProducts);
 app.get('/products', products.getAllProducts);
-app.get('/sales/:id', sales.findByIdSales);
 app.get('/sales', sales.getAllSales);
+app.get('/products/:id', products.findByIdProducts);
+app.get('/sales/:id', sales.findByIdSales);
 
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);
