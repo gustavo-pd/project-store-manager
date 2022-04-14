@@ -17,10 +17,11 @@ const findByIdSales = async (id) => {
   WHERE sales_products.sale_id = ?
   ORDER BY sale_id, productId`;
 
-  const [salesData] = await connection.execute(query, [id]);
+  const salesData = await connection.execute(query, [id]);
+  const salesDataD = salesData[0];
 
-  if (salesData.length === 0) return null;
-  return salesData;
+  if (salesDataD.length === 0) return null;
+  return salesDataD;
 };
 
 module.exports = {
