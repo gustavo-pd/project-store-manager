@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 const products = require('./controllers/ProductsController');
 const sales = require('./controllers/SalesController');
 const productsMiddlewares = require('./middlewares/ProductsMiddleware');
+const salesMiddlewares = require('./middlewares/SalesMiddleware');
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {
@@ -24,6 +25,10 @@ app.post('/products',
   productsMiddlewares.validName,
   productsMiddlewares.validQuantity,
   products.createNewProduct);
+app.post('/sales',
+  salesMiddlewares.validProductId,
+  salesMiddlewares.validQuantity,
+  sales.createNewSale);
 
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);

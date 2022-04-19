@@ -16,7 +16,16 @@ const findByIdSales = async (req, res) => {
   res.status(200).json(sale);
 };
 
+const createNewSale = async (req, res) => {
+  const sales = req.body;
+
+  const newSale = await SalesService.createNewSale(sales);
+
+  return res.status(201).json(newSale);
+};
+
 module.exports = {
   getAllSales,
   findByIdSales,
+  createNewSale,
 };
