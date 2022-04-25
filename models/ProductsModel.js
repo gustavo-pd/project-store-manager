@@ -27,7 +27,8 @@ const createNewProduct = async (name, quantity) => {
 };
 
 const nameVerification = async (name) => {
-  const [product] = await connection.query('SELECT * FROM StoreManager.products WHERE name = ?', name);
+  const query = 'SELECT * FROM StoreManager.products WHERE name = ?';
+  const [product] = await connection.query(query, name);
   return product[0] !== undefined;
 };
 
