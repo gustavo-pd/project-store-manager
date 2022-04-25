@@ -46,11 +46,16 @@ const editSales = async (id, sales) => {
   await connection.execute(
     'UPDATE StoreManager.sales_products SET quantity= ? WHERE sale_id= ? AND product_id= ?',
     [sales.quantity, id, sales.productId],
-  );
+  );  
   return {
     productId: sales.productId,
     quantity: sales.quantity,
   };
+};
+
+const deleteSales = async (id) => {
+  const query = 'DELETE FROM StoreManager.sales WHERE id = ?';
+  await connection.execute(query, [id]);
 };
 
 module.exports = {
@@ -59,4 +64,5 @@ module.exports = {
   createNewId,
   createNewSale,
   editSales,
+  deleteSales,
 };

@@ -20,4 +20,7 @@ salesRouter.put('/:id',
   salesMiddlewares.validQuantity,
   sales.editSales);
 
+salesRouter.delete('/:id',
+  sales.deleteSales);
+
 module.exports = salesRouter;
