@@ -33,7 +33,6 @@ const createNewSale = async (sales) => {
 const editSales = async (id, sales) => {  
     sales.forEach(async (sale) => {
       await SalesModel.editSales(id, sale);
-      await updateQuantity(id, sale.quantity);
     });
   return {
     saleId: id,
