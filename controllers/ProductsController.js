@@ -31,10 +31,16 @@ const createNewProduct = async (req, res) => {
 const editProducts = async (req, res) => {
   const { name, quantity } = req.body;
   const { id } = req.params;
-  
+
+  const nameVerification = await ProductsService.nameVerification(name);
+
   const product = await ProductsService.editProducts(parseInt(id, 10), { name, quantity });
 
-  const findId = await ProductsService.findByIdProducts(parseInt(id, 10));
+  const findId = await ProductsService.findByIdProducts(id);
+
+  if (nameVerification) {
+    return res.status(409).json({ message: 'Product already exists' });
+  }
 
   if (!findId) {
     return res.status(404).json({ message: 'Product not found' });
