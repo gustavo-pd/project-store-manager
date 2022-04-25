@@ -38,12 +38,12 @@ const editProducts = async (req, res) => {
 
   const findId = await ProductsService.findByIdProducts(id);
 
-  if (nameVerification) {
-    return res.status(409).json({ message: 'Product already exists' });
-  }
-
   if (!findId) {
     return res.status(404).json({ message: 'Product not found' });
+  }
+
+  if (nameVerification) {
+    return res.status(409).json({ message: 'Product already exists' });
   }
 
   return res.status(200).json(product);
