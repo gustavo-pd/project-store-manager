@@ -17,6 +17,12 @@ const findByIdProducts = async (req, res) => {
 const createNewProduct = async (req, res) => {
   const { name, quantity } = req.body;
 
+  const nameVerification = await ProductsService.nameVerification(name);
+
+  if (nameVerification) {
+    return res.status(409).json({ message: 'Product already exists' });
+  }
+
   const newProduct = await ProductsService.createNewProduct(name, quantity);
 
   return res.status(201).json(newProduct);

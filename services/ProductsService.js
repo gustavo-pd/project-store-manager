@@ -12,7 +12,11 @@ const findByIdProducts = async (id) => {
 
 const createNewProduct = async (name, quantity) => {
   const product = await ProductsModel.createNewProduct(name, quantity);
+  return product;
+};
 
+const nameVerification = async (name) => {
+  const product = await ProductsModel.nameVerification(name);
   return product;
 };
 
@@ -20,4 +24,5 @@ module.exports = {
   getAllProducts,
   findByIdProducts,
   createNewProduct,
+  nameVerification,
 };
