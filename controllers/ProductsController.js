@@ -32,9 +32,9 @@ const editProducts = async (req, res) => {
   const { name, quantity } = req.body;
   const { id } = req.params;
   
-  const product = await ProductsService.editProducts(id, { name, quantity });
+  const product = await ProductsService.editProducts(parseInt(id, 10), { name, quantity });
 
-  const findId = await ProductsService.findByIdProducts(id);
+  const findId = await ProductsService.findByIdProducts(parseInt(id, 10));
 
   if (!findId) {
     return res.status(404).json({ message: 'Product not found' });
