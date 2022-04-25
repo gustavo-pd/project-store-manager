@@ -20,9 +20,15 @@ const nameVerification = async (name) => {
   return product;
 };
 
+const editProducts = async (id, { name, quantity }) => {
+  const product = await ProductsModel.editProducts(id, { name, quantity });
+  return product;
+};
+
 module.exports = {
   getAllProducts,
   findByIdProducts,
   createNewProduct,
   nameVerification,
+  editProducts,
 };

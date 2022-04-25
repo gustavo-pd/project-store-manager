@@ -28,8 +28,18 @@ const createNewProduct = async (name, quantity) => {
 
 const nameVerification = async (name) => {
   const query = 'SELECT * FROM StoreManager.products WHERE name = ?';
-  const [product] = await connection.query(query, name);
-  return product[0] !== undefined;
+  const product = await connection.query(query, name);
+  return product[0][0] !== undefined;
+};
+
+const editProducts = async (id, { name, quantity }) => {
+  const query = 'UPDATE StoreManager.products SET name= ?, quantity= ? WHERE id= ?';
+  await connection.execute(query, [name, quantity, id]);
+  return {
+    id,
+    name,
+    quantity,
+  };
 };
 
 module.exports = {
@@ -37,4 +47,5 @@ module.exports = {
   findByIdProducts,
   createNewProduct,
   nameVerification,
+  editProducts,
 };

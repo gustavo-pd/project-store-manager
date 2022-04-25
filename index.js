@@ -29,6 +29,10 @@ app.post('/sales',
   salesMiddlewares.validProductId,
   salesMiddlewares.validQuantity,
   sales.createNewSale);
+app.put('/products/:id',
+  productsMiddlewares.validName,
+  productsMiddlewares.validQuantity,
+  products.editProducts);
 
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);
