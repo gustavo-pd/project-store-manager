@@ -21,8 +21,19 @@ const createNewSale = async (sales) => {
   };
 };
 
+const editSales = async (id, sales) => {  
+    sales.forEach(async (sale) => {
+      await SalesModel.editSales(id, sale);
+    });
+  return {
+    saleId: id,
+    itemUpdated: sales,
+  };
+};
+
 module.exports = {
   getAllSales,
   findByIdSales,
   createNewSale,
+  editSales,
 };

@@ -15,4 +15,9 @@ salesRouter.post('',
   salesMiddlewares.validQuantity,
   sales.createNewSale);
 
+salesRouter.put('/:id',
+  salesMiddlewares.validProductId,
+  salesMiddlewares.validQuantity,
+  sales.editSales);
+
 module.exports = salesRouter;
