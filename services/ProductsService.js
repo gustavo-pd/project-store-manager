@@ -25,10 +25,15 @@ const editProducts = async (id, { name, quantity }) => {
   return product;
 };
 
+const deleteProducts = async (id) => {
+  await ProductsModel.deleteProducts(id);
+};
+
 module.exports = {
   getAllProducts,
   findByIdProducts,
   createNewProduct,
   nameVerification,
   editProducts,
+  deleteProducts,
 };

@@ -33,7 +33,7 @@ const createNewId = async () => {
 
 const createNewSale = async (id, sales) => {
   await connection.execute(
-    'INSERT INTO sales_products SET sale_id = ?, product_id = ?, quantity = ?',
+    'INSERT INTO StoreManager.sales_products SET sale_id = ?, product_id = ?, quantity = ?',
     [id, sales.productId, sales.quantity],
   );
   return {

@@ -20,4 +20,7 @@ productsRouter.put('/:id',
   productsMiddlewares.validQuantity,
   products.editProducts);
 
+productsRouter.delete('/:id',
+  products.deleteProducts);
+
 module.exports = productsRouter;
