@@ -2,9 +2,9 @@ const connection = require('./connection');
 
 const getAllSales = async () => {
   const query = `SELECT sale_id as saleId, date, product_id as productId, quantity 
-  FROM StoreManager.sales_products AS sProducts
+  FROM StoreManager.sales_products AS salesProduct
   INNER JOIN StoreManager.sales AS sales
-  ON sProducts.sale_id = sales.id`;
+  ON salesProduct.sale_id = sales.id`;
   const sales = await connection.execute(query);
   return sales[0];
 };
@@ -65,7 +65,7 @@ const deleteSales = async (id) => {
 const updateQuantities = async (id, quantity) => {
   await connection
     .execute(
-      'UPDATE StoreManager.products set quantity = ? WHERE id = ?;',
+      'UPDATE StoreManager.products SET quantity = ? WHERE id = ?;',
       [quantity, id],
     );
   return {
