@@ -74,124 +74,53 @@ describe('Retorna um objeto contendo um produto específico', () => {
   
 });
 
-// describe('Retorna um objeto contendo um produto específico', () => {
+describe('Insere um novo produto no banco de dados', () => {
+  const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
 
-//   const payloadProduct = [{ id: 1, name: 'Martelo de Thor', quantity: 10 }];
-//   const id = 1;
+  before(async () => {
 
-//   before(async () => {
-//     const execute = [payloadProduct]; // retorno esperado nesse teste
+    sinon.stub(ProductsModel, 'createNewProduct').resolves(insertedPayloadProduct);
+  });
 
-//     sinon.stub(connection, 'execute').resolves(execute);
-//   });
-
-//   after(async () => {
-//     connection.execute.restore();
-//   });
+  after(async () => {
+    ProductsModel.createNewProduct.restore();
+  });
       
-//   describe('quando retorna com sucesso', () => {
+  describe('quando insere com sucesso', () => {
 
-//     it('retorna um objetos', async () => {
-//       const response = await ProductsModel.findByIdProducts(id);
+    it('retorna um objetos', async () => {
+      const response = await ProductsService.createNewProduct(insertedPayloadProduct.name, insertedPayloadProduct.quantity);
 
-//       expect(response).to.be.a('object');
-//     });
+      expect(response).to.be.a('object');
+    });
 
-//     it('tal objeto possui as propriedades id, name e quantity', async () => {
-//       const response = await ProductsModel.findByIdProducts(id);
+    it('o objeto é estritamente igual ao payload', async () => {
+      const response = await ProductsService.createNewProduct(insertedPayloadProduct.name, insertedPayloadProduct.quantity);
 
-//       expect(response).to.have.a.property('id');
-//       expect(response).to.have.a.property('name');
-//       expect(response).to.have.a.property('quantity');
-//     });
-//   });
-  
-// });
-
-// describe('Insere um novo produto no banco de dados', () => {
-//   const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
-
-//   before(async () => {
-//     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
-
-//     sinon.stub(connection, 'execute').resolves(execute);
-//   });
-
-//   after(async () => {
-//     connection.execute.restore();
-//   });
-      
-//   describe('quando insere com sucesso', () => {
-
-//     it('retorna um objetos', async () => {
-//       const response = await ProductsModel.createNewProduct(insertedPayloadProduct.name, insertedPayloadProduct.quantity);
-
-//       expect(response).to.be.a('object');
-//     });
-
-//     it('o objeto é estritamente igual ao payload', async () => {
-//       const response = await ProductsModel.createNewProduct(insertedPayloadProduct.name, insertedPayloadProduct.quantity);
-
-//       expect(response).to.deep.eq(insertedPayloadProduct);
-//     });
+      expect(response).to.deep.eq(insertedPayloadProduct);
+    });
     
-//   });
-  
-// });
+  });
+});
 
-// describe('Edita um produto no banco de dados', () => {
+describe('Deleta um produto específico', () => {
+  const id = 1;
 
-//   const payloadProduct = { name: 'Capa do Josias', quantity: 25 };
-//   const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
-//   const id = 1;
+  before(async () => {
 
-//   before(async () => {
-//     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
+    sinon.stub(ProductsModel, 'deleteProducts').resolves();
+  });
 
-//     sinon.stub(connection, 'execute').resolves(execute);
-//   });
+  after(async () => {
+    ProductsModel.deleteProducts.restore();
+  });
 
-//   after(async () => {
-//     connection.execute.restore();
-//   });
-      
-//   describe('quando edita com sucesso', () => {
+  describe('quando deleta com sucesso', () => {
+    it('retorna undefined', async () => {
+      const response = await ProductsService.deleteProducts(id);
 
-//     it('retorna um objeto', async () => {
-//       const response = await ProductsModel.editProducts(id, payloadProduct);
+      expect(response).to.deep.eq(undefined);
+    });
 
-//       expect(response).to.be.a('object');
-//     });
-
-//     it('o objeto é estritamente igual ao payload', async () => {
-//       const response = await ProductsModel.editProducts(id, payloadProduct);
-
-//       expect(response).to.deep.eq(insertedPayloadProduct);
-//     });
-    
-//   });
-  
-// });
-
-// describe('Deleta um produto específico', () => {
-//   const id = 1;
-
-//   before(async () => {
-//     sinon.stub(connection, 'execute').resolves();
-//   });
-
-//   after(async () => {
-//     connection.execute.restore();
-//   });
-      
-//   describe('quando deleta um produto não retorna nada', () => {
-
-//     it('retorna um objetos', async () => {
-//       const response = await ProductsModel.deleteProducts(id);
-
-//       expect(response).to.deep.eq(undefined);
-//     });
-
-//   });
-  
-// });
+  });  
+});

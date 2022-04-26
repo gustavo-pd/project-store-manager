@@ -152,7 +152,7 @@ describe('Deleta um produto específico', () => {
       
   describe('quando deleta um produto não retorna nada', () => {
 
-    it('retorna um objetos', async () => {
+    it('retorna undefined', async () => {
       const response = await ProductsModel.deleteProducts(id);
 
       expect(response).to.deep.eq(undefined);
