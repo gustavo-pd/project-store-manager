@@ -96,85 +96,87 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
   });
 });
 
-describe('Deleta uma sale em específico', () => {
-  const id = 2;
-  const quantity = 15;
-  const saleId = [
-    { id: 1, date: new Date() },
-    { id: 2, date: new Date() },
-  ]
-  const allSales = [
-    {
-      saleId: 1,
-      date: new Date(),
-      productId: 1,
-      quantity: 5
-    },
-    {
-      saleId: 1,
-      date: new Date(),
-      productId: 2,
-      quantity: 10
-    },
-    {
-      saleId: 2,
-      date: new Date(),
-      productId: 3,
-      quantity: 15
-    }
-  ]
+// describe('Deleta uma sale em específico', () => {
+//   const id = 2;
+//   const quantity = 15;
+//   const saleId = [
+//     { id: 1, date: new Date() },
+//     { id: 2, date: new Date() },
+//   ]
+//   const allSales = [
+//     {
+//       saleId: 1,
+//       date: new Date(),
+//       productId: 1,
+//       quantity: 5
+//     },
+//     {
+//       saleId: 1,
+//       date: new Date(),
+//       productId: 2,
+//       quantity: 10
+//     },
+//     {
+//       saleId: 2,
+//       date: new Date(),
+//       productId: 3,
+//       quantity: 15
+//     }
+//   ]
 
-  beforeEach(() => {
-    sinon.stub(SalesModel, 'getAllSalesId').resolves(saleId);
-    sinon.stub(SalesModel, 'getAllSales').resolves(allSales);
-    sinon.stub(SalesService, 'updateQuantities').resolves(undefined);
-    sinon.stub(SalesModel, 'deleteSales').resolves(undefined);
-  });
+//   beforeEach(() => {
+//     sinon.stub(SalesModel, 'getAllSalesId').resolves(saleId);
+//     sinon.stub(SalesModel, 'getAllSales').resolves(allSales);
+//     sinon.stub(SalesService, 'updateQuantities').resolves(undefined);
+//     sinon.stub(SalesModel, 'deleteSales').resolves(undefined);
+//   });
 
-  afterEach(() => {
-    SalesModel.getAllSalesId.restore();
-    SalesModel.getAllSales.restore();
-    SalesService.updateQuantities.restore();
-    SalesModel.deleteSales.restore();
-  });
+//   afterEach(() => {
+//     SalesModel.getAllSalesId.restore();
+//     SalesModel.getAllSales.restore();
+//     SalesService.updateQuantities.restore();
+//     SalesModel.deleteSales.restore();
+//   });
 
-  describe('quando deleta com sucesso', () => {
-    it('retorna undefined', async () => {
-      const response = await SalesService.deleteSales(id);
+//   describe('quando deleta com sucesso', () => {
+//     it('retorna undefined', async () => {
+//       const response = await SalesService.deleteSales(id);
 
-      expect(response).to.deep.equal(undefined);
-    });
+//       expect(response).to.deep.equal(undefined);
+//     });
 
-  });  
-});
+//   });  
+// });
 
-//   describe('Insere uma nova venda no banco de dados', () => {
-//     const insertedPayloadSale = [{ id: 4, productId: 2, quantity: 20 }];
+// describe('Insere uma nova venda no banco de dados', () => {
+//     const insertedPayloadSale = [{ productId: 2, quantity: 20 }];
+//     const id = 2;
+//     const expectResult = {
+//       id,
+//       itemsSold: insertedPayloadSale,
+//     }
   
 //     beforeEach(() => {
-  
-//       sinon.stub(SalesModel, 'createNewSale').resolves(insertedPayloadSale);
+//       sinon.stub(SalesModel, 'createNewId').resolves(id);
+//       sinon.stub(SalesModel, 'createNewSale').resolves();
+//       sinon.stub(SalesService, 'updateQuantities').resolves();
 //     });
   
 //     afterEach(() => {
 //       SalesModel.createNewSale.restore();
+//       SalesModel.createNewId.restore();
+//       SalesService.updateQuantities.restore();
 //     });
         
 //     describe('quando insere com sucesso', () => {
-  
-//       it('retorna um objetos', async () => {
-//         const response = await SalesService.createNewSale(insertedPayloadSale);
-  
-//         expect(response.itemsSold[0]).to.be.a('object');
-//       });
-  
 //       it('o objeto é estritamente igual ao payload', async () => {
 //         const response = await SalesService.createNewSale(insertedPayloadSale);
   
-//         expect(response.itemsSold[0]).to.deep.eq(insertedPayloadSale[0]);
+//         expect(response).to.be.a('object')
+//         expect(response).to.deep.eq(expectResult);
 //       });
-      
 //     });
-//   });
-  
+
 // });
+  
+

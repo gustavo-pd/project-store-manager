@@ -13,11 +13,13 @@ salesRouter.get('/:id', sales.findByIdSales);
 salesRouter.post('',
   salesMiddlewares.validProductId,
   salesMiddlewares.validQuantity,
+  salesMiddlewares.validStock,
   sales.createNewSale);
 
 salesRouter.put('/:id',
   salesMiddlewares.validProductId,
   salesMiddlewares.validQuantity,
+  salesMiddlewares.validStock,
   sales.editSales);
 
 salesRouter.delete('/:id',

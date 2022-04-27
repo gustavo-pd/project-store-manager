@@ -28,13 +28,13 @@ const editSales = async (req, res) => {
   const { id } = req.params;
   const sales = req.body;
 
-  const sale = await SalesService.editSales(parseInt(id, 10), sales);
-
   const findId = await SalesService.findByIdSales(parseInt(id, 10));
 
   if (!findId) {
     return res.status(404).json({ message: 'Sale not found' });
   }
+
+  const sale = await SalesService.editSales(parseInt(id, 10), sales);
 
   return res.status(200).json(sale);
 };

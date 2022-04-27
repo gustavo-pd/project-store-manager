@@ -1,3 +1,5 @@
+const ProductsModel = require('../models/ProductsModel');
+
 const validProductId = async (req, res, next) => {
   const sales = req.body;
 
@@ -23,7 +25,25 @@ const validQuantity = async (req, res, next) => {
   next();
 };
 
+const validStock = async (req, res, next) => {
+  const sales = req.body;
+
+  const products = await ProductsModel.getAllProducts();
+  try {
+    sales.forEach((sale) => {
+      const product = products.find((p) => p.id === sale.productId);
+      if (product.quantity < sale.quantity) {
+        throw new Error();
+      }
+    });
+  } catch (error) {
+    return res.status(422).json({ message: 'Such amount is not permitted to sell' });
+  }
+  next();
+};
+
 module.exports = {
   validProductId,
   validQuantity,
+  validStock,
 };
