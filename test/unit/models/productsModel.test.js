@@ -10,13 +10,13 @@ describe('Retorna um array de objetos com todos os produtos registrados', () => 
     { id: 2, name: 'Traje de encolhimento', quantity: 20 },
     { id: 3, name: 'Escudo do Capitão América', quantity: 30 }];
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [payloadProducts]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -45,13 +45,13 @@ describe('Retorna um objeto contendo um produto específico', () => {
   const payloadProduct = [{ id: 1, name: 'Martelo de Thor', quantity: 10 }];
   const id = 1;
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [payloadProduct]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -77,13 +77,13 @@ describe('Retorna um objeto contendo um produto específico', () => {
 describe('Insere um novo produto no banco de dados', () => {
   const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -111,13 +111,13 @@ describe('Edita um produto no banco de dados', () => {
   const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
   const id = 1;
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -142,11 +142,11 @@ describe('Edita um produto no banco de dados', () => {
 describe('Deleta um produto específico', () => {
   const id = 1;
 
-  before(async () => {
+  beforeAll(() => {
     sinon.stub(connection, 'execute').resolves();
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       

@@ -27,13 +27,13 @@ describe('Retorna um array de objetos com todas as vendas registrados', () => {
     }
   ];
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [payloadSales]; // retorno esperado nesse teste
 
     sinon.stub(SalesModel, 'getAllSales').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     SalesModel.getAllSales.restore();
   });
       
@@ -67,13 +67,13 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
   }];
   const id = 2;
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [payloadSale]; // retorno esperado nesse teste
 
     sinon.stub(SalesModel, 'findByIdSales').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     SalesModel.findByIdSales.restore();
   });
       
@@ -99,12 +99,12 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
   describe('Insere uma nova venda no banco de dados', () => {
     const insertedPayloadSale = [{ id: 4, productId: 2, quantity: 20 }];
   
-    before(async () => {
+    beforeAll(() => {
   
       sinon.stub(SalesModel, 'createNewSale').resolves(insertedPayloadSale);
     });
   
-    after(async () => {
+    afterAll(() => {
       SalesModel.createNewSale.restore();
     });
         
@@ -130,12 +130,12 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
 describe('Deleta uma sale em específico', () => {
   const id = 1;
 
-  before(async () => {
+  beforeAll(() => {
 
     sinon.stub(SalesModel, 'deleteSales').resolves();
   });
 
-  after(async () => {
+  afterAll(() => {
     SalesModel.deleteSales.restore();
   });
 

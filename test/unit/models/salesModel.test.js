@@ -27,13 +27,13 @@ describe('Retorna um array de objetos com todos as vendas registrados', () => {
     }
   ];
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [payloadSales]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -68,13 +68,13 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
   }];
   const id = 2;
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [payloadSale]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -102,13 +102,13 @@ describe('Insere uma nova venda no banco de dados', () => {
   const id = 1;
   const insertedPayloadSale = [{ productId: 2, quantity: 20 }];
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -135,13 +135,13 @@ describe('Edita uma venda no banco de dados', () => {
   const insertedPayloadSale = { productId: 2, quantity: 20 };
   const id = 1;
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -166,11 +166,11 @@ describe('Edita uma venda no banco de dados', () => {
 describe('Deleta uma sale em específico', () => {
   const id = 1;
 
-  before(async () => {
+  beforeAll(() => {
     sinon.stub(connection, 'execute').resolves();
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
@@ -193,13 +193,13 @@ describe('Testa a função getAllSalesId', () => {
     { id: 2, date: '2022-04-26T18:26:54.000Z' },
   ];
 
-  before(async () => {
+  beforeAll(() => {
     const execute = [payloadSales]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  after(async () => {
+  afterAll(() => {
     connection.execute.restore();
   });
       
