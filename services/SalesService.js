@@ -44,7 +44,9 @@ return {
 
 const deleteSales = async (id) => {
   const allSalesId = await SalesModel.getAllSalesId();
+  console.log(allSalesId);
   const findSale = allSalesId.find((s) => s.id === parseInt(id, 10));
+  console.log(findSale);
   if (!findSale) {
     return false;
   }
