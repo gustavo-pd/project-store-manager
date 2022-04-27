@@ -116,7 +116,6 @@ describe('Insere uma nova venda no banco de dados', () => {
 
     it('retorna um objetos', async () => {
       const response = await SalesModel.createNewSale(id, insertedPayloadSale);
-      console.log(response);
       expect([response][0]).to.be.a('object');
     });
 

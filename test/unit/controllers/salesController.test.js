@@ -163,25 +163,4 @@ describe('Deleta uma venda em específico', () => {
     })
   })
 
-  // describe('Quando o id corresponde e o produto é deletado:', () => {
-  //   it('Deve responder com status 204', async () => {
-
-  //     req.params = { id: 2 };
-
-  //     res.status = sinon.stub().returns(res);
-  //     res.end = sinon.stub();
-
-  //     sinon.stub(SalesService, 'findByIdSales').resolves(true);
-  //     sinon.stub(SalesService, 'deleteSales').resolves();
-
-  //     await ProductsController.deleteSales(req, res);
-
-  //     expect(res.status.calledWith(204)).to.be.true;
-  //     expect(res.end.called).to.be.true;
-
-  //     SalesService.deleteSales.restore();
-  //     SalesService.findByIdSales.restore();
-
-  //   })
-  // })
 })
