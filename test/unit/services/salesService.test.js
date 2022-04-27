@@ -67,7 +67,7 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
   const id = 2;
 
   beforeEach(() => {
-    const execute = [payloadSale]; // retorno esperado nesse teste
+    const execute = [payloadSale]; // retorno esperado nesse teste...
 
     sinon.stub(SalesModel, 'findByIdSales').resolves(execute);
   });
