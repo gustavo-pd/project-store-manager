@@ -99,11 +99,12 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
     const insertedPayloadSale = [{ id: 4, productId: 2, quantity: 20 }];
   
     beforeEach(() => {
-  
+      sinon.stub(SalesModel, 'createNewId').resolves()
       sinon.stub(SalesModel, 'createNewSale').resolves(insertedPayloadSale);
     });
   
     afterEach(() => {
+      SalesModel.createNewId.restore();
       SalesModel.createNewSale.restore();
     });
         
