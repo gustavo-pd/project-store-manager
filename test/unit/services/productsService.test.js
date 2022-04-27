@@ -124,3 +124,56 @@ describe('Deleta um produto específico', () => {
 
   });  
 });
+
+describe('Checa se um nome já existe', () => {
+  const name = 'João'
+
+  beforeEach(() => {
+
+    sinon.stub(ProductsModel, 'nameVerification').resolves();
+  });
+
+  afterEach(() => {
+    ProductsModel.nameVerification.restore();
+  });
+
+  describe('', () => {
+    it('retorna o nome', async () => {
+      const response = await ProductsService.nameVerification(name);
+
+      expect(response).to.deep.eq(undefined);
+    });
+
+  });  
+});
+
+describe('Edita um produto no banco de dados', () => {
+  const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
+  const id = 2;
+  const product = { name: 'Capa do Josias', quantity: 25 }
+
+  beforeEach(() => {
+
+    sinon.stub(ProductsModel, 'editProducts').resolves(product);
+  });
+
+  afterEach(() => {
+    ProductsModel.editProducts.restore();
+  });
+      
+  describe('quando insere com sucesso', () => {
+
+    it('retorna um objetos', async () => {
+      const response = await ProductsService.editProducts(id, product);
+
+      expect(response).to.be.a('object');
+    });
+
+    it('o objeto é estritamente igual ao payload', async () => {
+      const response = await ProductsService.editProducts(id, product);
+
+      expect(response).to.deep.eq(product);
+    });
+    
+  });
+});

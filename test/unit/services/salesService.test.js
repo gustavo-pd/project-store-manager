@@ -96,6 +96,58 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
   });
 });
 
+// describe('Deleta uma sale em específico', () => {
+//   const id = 2;
+//   const quantity = 15;
+//   const saleId = [
+//     { id: 1, date: '2022-04-27T10:17:04.000Z' },
+//     { id: 2, date: '2022-04-27T10:17:04.000Z' },
+//   ]
+//   const allSales = [
+//     {
+//       saleId: 1,
+//       date: '2022-04-27T10:17:04.000Z',
+//       productId: 1,
+//       quantity: 5
+//     },
+//     {
+//       saleId: 1,
+//       date: '2022-04-27T10:17:04.000Z',
+//       productId: 2,
+//       quantity: 10
+//     },
+//     {
+//       saleId: 2,
+//       date: '2022-04-27T10:17:04.000Z',
+//       productId: 3,
+//       quantity: 15
+//     }
+//   ]
+
+//   beforeEach(() => {
+//     sinon.stub(SalesModel, 'getAllSalesId').resolves(saleId);
+//     sinon.stub(SalesModel, 'getAllSales').resolves(allSales);
+//     sinon.stub(SalesModel, 'updateQuantities').resolves();
+//     sinon.stub(SalesModel, 'deleteSales').resolves(undefined);
+//   });
+
+//   afterEach(() => {
+//     SalesModel.getAllSalesId.restore();
+//     SalesModel.getAllSales.restore();
+//     SalesModel.updateQuantities.restore();
+//     SalesModel.deleteSales.restore();
+//   });
+
+//   describe('quando deleta com sucesso', () => {
+//     it('retorna undefined', async () => {
+//       const response = await SalesService.deleteSales(id);
+
+//       expect(response).to.deep.eq(undefined);
+//     });
+
+//   });  
+// });
+
 //   describe('Insere uma nova venda no banco de dados', () => {
 //     const insertedPayloadSale = [{ id: 4, productId: 2, quantity: 20 }];
   
@@ -125,26 +177,4 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
 //     });
 //   });
   
-// });
-
-// describe('Deleta uma sale em específico', () => {
-//   const id = 1;
-
-//   beforeEach(() => {
-
-//     sinon.stub(SalesModel, 'deleteSales').resolves();
-//   });
-
-//   afterEach(() => {
-//     SalesModel.deleteSales.restore();
-//   });
-
-//   describe('quando deleta com sucesso', () => {
-//     it('retorna undefined', async () => {
-//       const response = await SalesService.deleteSales(id);
-
-//       expect(response).to.deep.eq(undefined);
-//     });
-
-//   });  
 // });
