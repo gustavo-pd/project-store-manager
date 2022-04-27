@@ -67,7 +67,7 @@ describe('Retorna um objeto contendo uma venda em específico', () => {
   const id = 2;
 
   beforeEach(() => {
-    const execute = [payloadSale]; // retorno esperado nesse teste
+    const execute = [payloadSale]; // retorno esperado nesse teste...
 
     sinon.stub(SalesModel, 'findByIdSales').resolves(execute);
   });
@@ -148,7 +148,7 @@ describe('Deleta uma sale em específico', () => {
   });  
 });
 
-//   describe('Insere uma nova venda no banco de dados', () => {
+  //   describe('Insere uma nova venda no banco de dados', () => {
 //     const insertedPayloadSale = [{ id: 4, productId: 2, quantity: 20 }];
   
 //     beforeEach(() => {
