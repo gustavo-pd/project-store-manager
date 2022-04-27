@@ -10,13 +10,13 @@ describe('Retorna um array de objetos com todos os produtos registrados', () => 
     { id: 2, name: 'Traje de encolhimento', quantity: 20 },
     { id: 3, name: 'Escudo do Capitão América', quantity: 30 }];
 
-  beforeAll(() => {
+  beforeEach(() => {
     const execute = [payloadProducts]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     connection.execute.restore();
   });
       
@@ -45,13 +45,13 @@ describe('Retorna um objeto contendo um produto específico', () => {
   const payloadProduct = [{ id: 1, name: 'Martelo de Thor', quantity: 10 }];
   const id = 1;
 
-  beforeAll(() => {
+  beforeEach(() => {
     const execute = [payloadProduct]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     connection.execute.restore();
   });
       
@@ -77,13 +77,13 @@ describe('Retorna um objeto contendo um produto específico', () => {
 describe('Insere um novo produto no banco de dados', () => {
   const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
 
-  beforeAll(() => {
+  beforeEach(() => {
     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     connection.execute.restore();
   });
       
@@ -111,13 +111,13 @@ describe('Edita um produto no banco de dados', () => {
   const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
   const id = 1;
 
-  beforeAll(() => {
+  beforeEach(() => {
     const execute = [{ insertId: 1 }]; // retorno esperado nesse teste
 
     sinon.stub(connection, 'execute').resolves(execute);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     connection.execute.restore();
   });
       
@@ -142,11 +142,11 @@ describe('Edita um produto no banco de dados', () => {
 describe('Deleta um produto específico', () => {
   const id = 1;
 
-  beforeAll(() => {
+  beforeEach(() => {
     sinon.stub(connection, 'execute').resolves();
   });
 
-  afterAll(() => {
+  afterEach(() => {
     connection.execute.restore();
   });
       

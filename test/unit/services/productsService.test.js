@@ -10,13 +10,13 @@ describe('Retorna um array de objetos com todos os produtos registrados', () => 
     { id: 2, name: 'Traje de encolhimento', quantity: 20 },
     { id: 3, name: 'Escudo do Capitão América', quantity: 30 }];
 
-  beforeAll(() => {
+  beforeEach(() => {
     const execute = [payloadProducts]; // retorno esperado nesse teste
 
     sinon.stub(ProductsModel, 'getAllProducts').resolves(execute);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     ProductsModel.getAllProducts.restore();
   });
       
@@ -44,13 +44,13 @@ describe('Retorna um objeto contendo um produto específico', () => {
   const payloadProduct = [{ id: 1, name: 'Martelo de Thor', quantity: 10 }];
   const id = 1;
 
-  beforeAll(() => {
+  beforeEach(() => {
     const execute = [payloadProduct]; // retorno esperado nesse teste
 
     sinon.stub(ProductsModel, 'findByIdProducts').resolves(execute);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     ProductsModel.findByIdProducts.restore();
   });
       
@@ -77,12 +77,12 @@ describe('Retorna um objeto contendo um produto específico', () => {
 describe('Insere um novo produto no banco de dados', () => {
   const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
 
-  beforeAll(() => {
+  beforeEach(() => {
 
     sinon.stub(ProductsModel, 'createNewProduct').resolves(insertedPayloadProduct);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     ProductsModel.createNewProduct.restore();
   });
       
@@ -106,12 +106,12 @@ describe('Insere um novo produto no banco de dados', () => {
 describe('Deleta um produto específico', () => {
   const id = 1;
 
-  beforeAll(() => {
+  beforeEach(() => {
 
     sinon.stub(ProductsModel, 'deleteProducts').resolves();
   });
 
-  afterAll(() => {
+  afterEach(() => {
     ProductsModel.deleteProducts.restore();
   });
 

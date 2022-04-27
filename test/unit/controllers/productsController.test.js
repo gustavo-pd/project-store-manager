@@ -87,34 +87,6 @@ describe('Retorna um objeto contendo um produto específico', () => {
   })
 })
 
-describe('Insere um novo produto no banco de dados', () => {
-
-  const insertedPayloadProduct = { id: 1, name: 'Capa do Josias', quantity: 25 };
-
-  const req = {};
-  const res = {};
-
-  describe('quando insere com sucesso', () => {
-    it('deve responder com status 201 e o que foi cadastrado em json', async () => {
-
-      req.body = insertedPayloadProduct;
-
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub();
-
-      sinon.stub(ProductsService, 'createNewProduct').resolves(insertedPayloadProduct);
-
-      await ProductsController.createNewProduct(req, res);
-
-      expect(res.status.calledWith(201)).to.be.true;
-      expect(res.json.calledWith(insertedPayloadProduct)).to.be.true;
-
-      ProductsService.createNewProduct.restore();
-
-    })
-  })
-})
-
 describe('Deleta um produto específico', () => {
 
   const req = {};
