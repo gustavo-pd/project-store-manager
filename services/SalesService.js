@@ -30,8 +30,7 @@ const createNewSale = async (sales) => {
 
   await Promise.all(sales.map(async (sale) => SalesModel.createNewSale(createId, sale)));
 
-  await Promise.all(sales.map(async (sale) => SalesModel
-    .subQuantities(sale.productId, sale.quantity)));
+  await Promise.all(sales.map(async (sale) => subQuantities(sale.productId, sale.quantity)));
 
   return {
     id: createId,
@@ -59,16 +58,6 @@ const deleteSales = async (id) => {
 
   await Promise.all(allSalesId.map(async (sale) => addQuantities(sale.productId, sale.quantity)));
   
-  // const findSale = allSalesId.find((s) => s.id === parseInt(id, 10));
-  // if (!findSale) {
-  //   return false;
-  // }
-  // const sales = await SalesModel.getAllSales();
-  // const filterSale = sales.filter((q) => q.saleId === parseInt(id, 10));
-
-  // filterSale.forEach((p) => { 
-  //   addQuantities(p.productId, (p.quantity));
-  // });
   await SalesModel.deleteSales(id);
 };
 
@@ -78,4 +67,6 @@ module.exports = {
   createNewSale,
   editSales,
   deleteSales,
+  subQuantities,
+  addQuantities,
 };
