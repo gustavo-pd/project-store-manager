@@ -1,4 +1,4 @@
-<h1>Store Manager</h1>
+<h1>MongoDB Commerce</h1>
 
 <h2>Índice</h2>
 <h4>- <a href="#context">Contexto</a></h4>
