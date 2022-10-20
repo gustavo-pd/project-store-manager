@@ -1,4 +1,4 @@
-<h1>MongoDB Commerce</h1>
+<h1>Store Manager</h1>
 
 <h2>Índice</h2>
 <h4>- <a href="#context">Contexto</a></h4>
@@ -8,7 +8,7 @@
 
 <h2 id="context">Contexto</h2>
 
-<p>O Blogs API é um projeto de back-end, onde foi feito uma API CRUD para uma loja.</p>
+<p>O Store Manager é um projeto de back-end, onde foi feito uma API CRUD para uma loja.</p>
 <p>Esse projeto foi desenvolvido durante o curso da Trybe com o objetivo de consolidar os estudos e construir uma API RESTful CRUD com a arquitetura MSC, foi realizado em Abril de 2022, no módulo de Back-end.</p>
 
 
